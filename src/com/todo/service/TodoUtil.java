@@ -34,18 +34,18 @@ public class TodoUtil {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("\n"
-				+ "\n===[할 일 삭제]===\n"
+		System.out.print("\n===[할 일 삭제]===\n"
 				+ "삭제할 항목의 제목 >> ");
 		String title = sc.next();
 		
 		for (TodoItem item : l.getList()) {
 			if (title.equals(item.getTitle())) {
 				l.deleteItem(item);
-				System.out.println("할 이 성공적으로 삭제되었습니다.");
-				break;
+				System.out.println("할 일이 성공적으로 삭제되었습니다.");
+				return;
 			}
 		}
+		System.out.println("해당 제목을 찾지 못했습니다.");
 	}
 
 
@@ -67,6 +67,8 @@ public class TodoUtil {
 			System.out.println("같은 제목이 이미 있습니다.");
 			return;
 		}
+		
+		sc.nextLine();
 		
 		System.out.print("새 내용 >> ");
 		String new_description = sc.nextLine().trim();
