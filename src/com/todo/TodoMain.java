@@ -14,8 +14,10 @@ public class TodoMain {
 		TodoList l = new TodoList();
 		boolean isList = false;
 		boolean quit = false;
+		TodoUtil.loadList(l,"todolist.txt");
+		Menu.displaymenu();
 		do {
-			Menu.displaymenu();
+			Menu.prompt();
 			isList = false;
 			String choice = sc.next();
 			switch (choice) {
@@ -51,17 +53,22 @@ public class TodoMain {
 				l.sortByDate();
 				isList = true;
 				break;
+				
+			case "help":
+				Menu.displaymenu();
+				break;
 
 			case "exit":
 				quit = true;
 				break;
 
 			default:
-				System.out.println("please enter one of the above mentioned command");
+				System.out.println("\n정확한 명령어를 입력하세요. 명령어 메뉴를 보시려면 \"help\"를 입력하세요.");
 				break;
 			}
 			
 			if(isList) l.listAll();
 		} while (!quit);
+		TodoUtil.saveList(l,"todolist.txt");
 	}
 }
