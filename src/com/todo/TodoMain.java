@@ -19,8 +19,15 @@ public class TodoMain {
 		do {
 			Menu.prompt();
 			isList = false;
-			String choice = sc.next();
-			switch (choice) {
+			
+			String raw_command = sc.nextLine().trim();
+			String[] command_array = raw_command.split(" ");
+			String command = command_array[0];
+			String keyword = "";
+			if(command_array.length >= 2)
+				keyword = command_array[1];
+			
+			switch (command) {
 
 			case "add":
 				TodoUtil.createItem(l);
@@ -53,6 +60,28 @@ public class TodoMain {
 				l.sortByDate();
 				isList = true;
 				break;
+			
+			case "ls_date_desc":
+				l.sortByDate();
+				l.reverseList();
+				isList = true;
+				break;
+				
+			case "find":
+				TodoUtil.find(l, keyword);
+				break;
+			
+			case "find_cate":
+				TodoUtil.find_cate(l, keyword);
+				break;
+				
+			case "ls_cate":
+				TodoUtil.ls_cate(l);
+				break;
+				
+			case "save":
+				TodoUtil.saveList(l,"todolist.txt");
+				break;
 				
 			case "help":
 				Menu.displaymenu();
@@ -69,6 +98,6 @@ public class TodoMain {
 			
 			if(isList) TodoUtil.listAll(l);
 		} while (!quit);
-		TodoUtil.saveList(l,"todolist.txt");
+		System.out.println("앱을 종료합니다.");
 	}
 }

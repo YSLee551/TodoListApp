@@ -30,11 +30,6 @@ public class TodoList {
 		return new ArrayList<TodoItem>(list);
 	}
 
-	public void sortByName() {
-		Collections.sort(list, new TodoSortByName());
-
-	}
-
 	public void listAll() {
 		System.out.println("\n"
 				+ "inside list_All method\n");
@@ -43,12 +38,17 @@ public class TodoList {
 		}
 	}
 	
-	public void reverseList() {
-		Collections.reverse(list);
+	public void sortByName() {
+		Collections.sort(list, new TodoSortByName());
+
 	}
 
 	public void sortByDate() {
 		Collections.sort(list, new TodoSortByDate());
+	}
+	
+	public void reverseList() {
+		Collections.reverse(list);
 	}
 
 	public int indexOf(TodoItem t) {
