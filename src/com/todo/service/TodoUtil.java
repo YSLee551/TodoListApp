@@ -32,7 +32,7 @@ public class TodoUtil {
 		System.out.print("마감일자(YYYY/MM/DD) >> ");
 		due_date = sc.nextLine().trim();
 		
-		TodoItem t = new TodoItem(title, desc, category, due_date);
+		TodoItem t = new TodoItem(category, title, desc, due_date);
 		list.addItem(t);
 		System.out.println("할 일이 성공적으로 추가되었습니다.");
 	}
@@ -121,7 +121,7 @@ public class TodoUtil {
 		String new_due_date = sc.next().trim();
 		
 		l.deleteItem(edit_item);
-		TodoItem t = new TodoItem(new_title, new_description, new_category, new_due_date);
+		TodoItem t = new TodoItem(new_category, new_title, new_description, new_due_date);
 		l.addItem(t);
 		System.out.println("할 일이 성공적으로 수정되었습니다.");
 	}
